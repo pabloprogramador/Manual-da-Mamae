@@ -10,8 +10,8 @@
  */
 function peqCarregaImg(este, num, total, end, msgStatus) {
 		
-		iniPagina(num);
-		este.children('div').children('img').css({opacity:0});
+		//iniPagina(num);
+		//este.children('div').children('img').css({opacity:0});
 
 		function carregaPagina(e){
 
@@ -30,16 +30,21 @@ function peqCarregaImg(este, num, total, end, msgStatus) {
 		}
 
 		function iniPagina(e){
-			este.children('div:nth-child('+e+')').find('div').html(msgStatus);
-			este.children('div:nth-child('+e+')').find('img').hide();
+			//este.children('div:nth-child('+e+')').find('div').html(msgStatus);
+			//este.children('div:nth-child('+e+')').find('img').hide();
+			este.children('div:nth-child('+e+')').find('div').hide();
 			este.children('div:nth-child('+e+')').find('img').attr({src: end+e+".jpg"});
 
 	
 			
-			carregaPagina(e);
+			//carregaPagina(e);
 	
 			//$("#aux").html(teste);
 			//este.children('div:nth-child('+e+')').find('img').gx
 			
+		}
+		
+		for(i = num; i < total; i++){
+			iniPagina(i);
 		}
 };
