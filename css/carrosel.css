@@ -1,0 +1,124 @@
+#rodapeDentro {
+    bottom:-50px;
+}
+
+#cabecalhoDentro {
+    top:-50px;
+}
+
+#rodape {
+    bottom:0px;
+}
+
+#cabecalho {
+    top:0px;
+}
+
+#protecao {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	filter:alpha(opacity=.3);
+	-moz-opacity:.3;
+	-khtml-opacity:.3;
+	opacity:.3;
+}
+
+.abas {
+    position:absolute;
+    width:100%;
+    height:50px;
+    z-index:999999;    
+}
+
+.abas_especiais {
+  background: #cbced1; /* Old browsers */
+background: -moz-linear-gradient(top,  #cbced1 0%, #a8afb4 2%, #90979e 16%, #a8afb4 93%, #90979e 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cbced1), color-stop(2%,#a8afb4), color-stop(16%,#90979e), color-stop(93%,#a8afb4), color-stop(100%,#90979e)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #cbced1 0%,#a8afb4 2%,#90979e 16%,#a8afb4 93%,#90979e 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #cbced1 0%,#a8afb4 2%,#90979e 16%,#a8afb4 93%,#90979e 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #cbced1 0%,#a8afb4 2%,#90979e 16%,#a8afb4 93%,#90979e 100%); /* IE10+ */
+background: linear-gradient(top,  #cbced1 0%,#a8afb4 2%,#90979e 16%,#a8afb4 93%,#90979e 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cbced1', endColorstr='#90979e',GradientType=0 ); /* IE6-9 */
+ -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .5);
+-moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .5);
+box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, .5);
+}
+
+
+.tipo_pagStatus{
+	position:absolute;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	top:50%;
+	left:50%;
+	padding:10px;
+	width:300px;
+	background-color:#eee;
+	border:solid 1px #CCC;
+	margin-left:-150px;
+	margin-top:-10px;
+	text-align:center;
+	
+}
+
+.folha_mini{
+position:absolute;
+filter:alpha(opacity=0);
+-moz-opacity:0;
+-khtml-opacity:0;
+opacity:0;
+}
+	.azutekCarouselObj {
+				position:relative; 
+				overflow:hidden;
+				display:block;
+				background:#eee;
+				
+			}
+
+			.azutekCarouselObj .container{
+				position:absolute; 
+				white-space:nowarp;
+				overflow:hidden;
+			}
+
+			.azutekCarouselObj .card{
+				position:relative; 
+				display:block;
+				float:left;
+				margin:0; 
+				background:#fff;
+
+			}
+			
+			/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 0px;
+	height:0px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+	background:#eee; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background:#CCC; 
+     /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);  */
+	-moz-box-shadow: inset -1px -1px 1px #888;
+	-webkit-box-shadow: inset -1px -1px 1px #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color:#666;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background:#eee; 
+}

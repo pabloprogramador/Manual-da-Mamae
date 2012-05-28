@@ -1,0 +1,139 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Manual Mamãe</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="css/carrosel.css" />
+	<script src="js/jquery-1.7.1.min.js"></script>
+ 
+    <script src="js/jquery-ui-1.8.7.custom.min.js"></script>
+    <script type="text/javascript" src="js/GX.js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery.azutek.com.carousel.js?x=20"></script>
+    
+<script type="text/javascript" charset="utf-8">
+			var total = 240;
+			$(document).ready(function() {
+				$('#palco').height((window.innerHeight - 0)+"px");
+		
+				ini();
+				
+			});
+			
+		function ini(){
+			fechaSub();
+			var paginas = '';
+			var i = 1;
+			for(i = 1; i < total + 1; i++){
+				paginas += '<div class="card" style="overflow: auto;"><div id="pagStatus'+i+'" class="tipo_pagStatus">Aguardando...</div><img id="pagThumb'+i+'" class="folha_mini" alt="" width="100%" border="0" /><img id="pag'+i+'" class="folha_mini" alt="" width="100%" border="0" /></div>';
+			}
+			
+            $('#paginasConteudo').html(paginas);
+			$('#azutekCarousel').azutekCarousel({
+					transitionSpeed :250,
+					activeCard:0,
+					width:(window.innerWidth - 0)+"px",
+					height:(window.innerHeight - 0)+"px"
+			});
+			iniThumb(1);
+			iniPagina(1);
+			
+		}
+		
+		function carregaThumb(e){
+			$('#pagThumb'+e).load(function(){
+				$('#pagThumb'+e).gx({'opacity':.3}, 500);
+				//.fadeTo('slow', .3);
+				if(e < total){
+					iniThumb(e+1);
+				}
+			});
+		}
+		
+		function iniThumb(e){
+			$('#pagThumb'+e).attr({src: "img/thumb/MANUAL DA MAMAE GYN 2012 - "+e+".jpg"});
+			carregaThumb(e);
+		}
+
+		
+		function carregaPagina(e){
+			$('#pag'+e).load(function(){
+				$('#pagStatus'+e).hide();
+				$('#pag'+e).gx({'opacity':1}, 500);
+				//.fadeTo('slow', 1);
+				if(e < total){
+					iniPagina(e+1);
+				}
+			});
+		}
+		
+		function iniPagina(e){
+			$('#pagStatus'+e).html("Carregando...");
+			$('#pag'+e).attr({src: "img/MANUAL DA MAMAE GYN 2012 - "+e+".jpg"});
+			carregaPagina(e);
+		}
+		
+		$(function(){
+  			$("#protecao").click(function() {
+				fechaSub();
+			});
+			
+			$("#cabecalho, #rodape").click(function() {
+				abreSub();
+			});
+		});
+		
+		function abreSub(){
+				$("#cabecalho").hide();
+				$("#rodape").hide();
+				$("#cabecalhoDentro").gx({'top': '0'}, 500, 'Sine:Out')
+				//animate({ top: 0 });
+				$("#rodapeDentro").animate({ bottom: 0 });
+				//$("#cabecalhoDentro").show();
+				//$("#rodapeDentro").show();
+				$('#protecao').show().gx({'opacity':.3}, 500);
+		}
+		
+		function fechaSub(){
+				$('#protecao').gx({'opacity':0}, 500);
+				$('#protecao').hide();
+				$("#cabecalho").show();
+				$("#rodape").show();
+				$("#cabecalhoDentro").gx({'top': '-50'}, 500, 'Sine:Out')
+				$("#rodapeDentro").animate({ bottom: -50 });
+				//$("#cabecalhoDentro").hide();
+				//$("#rodapeDentro").hide();
+			   //$("protecao").animate({ top: $(this).offset().top, height: $(this).height() });
+		}
+		//slideTocard(e);
+		
+</script>
+
+</head> 
+
+<body style="background-color:#fff; padding:0px; margin:0px"> 
+<div id="palco" style="padding:0px;">
+	<div class="azutekCarouselObj" id="azutekCarousel">
+		<div id="paginasConteudo" class="container">
+		</div>
+	</div>
+</div>
+<div id="protecao"></div>
+
+<div id="cabecalhoDentro" class="abas abas_especiais" >
+</div>
+
+<div id="rodapeDentro" class="abas abas_especiais" >
+</div>
+
+
+<div id="cabecalho" class="abas">
+</div>
+
+
+<div id="rodape" class="abas">
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Manual Mamãe</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="css/peqRevista.css" />
+        
+	<script src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/GX.js"></script>
+    <script src="js/hammer.js"></script>
+    <script src="js/jquery.hammer.js"></script>
+    <script type="text/javascript" src="js/peqCarregaImg.js"></script>
+    <script type="text/javascript" src="js/peqZoomImg.js"></script>
+    <script type="text/javascript" src="js/peqRevista.js"></script>
+
+    
+ 	<script type="text/javascript" charset="utf-8">
+
+	$(document).ready(function(){
+		
+		$('#principal').height((window.innerHeight - 0)+"px");
+		$('#principal').width((window.innerWidth - 0)+"px");
+		
+		$('#revista').height((window.innerHeight - 0)+"px");
+		$('#revista').width((window.innerWidth - 0)+"px");
+		
+		$('#revista').peqRevista({
+			atual:1,
+			padraoSrc:'img/MANUAL DA MAMAE GYN 2012 - ',
+			padraoSrcMini:'img/thumb/MANUAL DA MAMAE GYN 2012 - ',
+			quantidade:240
+		});
+		//var peqZoom = new peqZoomImg($("#revista"), $("#revista").children('div:nth-child(1)').children('img')); //Zoom
+	});
+	</script>
+
+</head> 
+
+<body style="background-color:#fff; padding:0px; margin:0px; overflow:hidden;"> 
+<div id="principal">
+<!--
+<a href="javascript:passaPagina(1);">teste1</a> - <a href="javascript:passaPagina(200);">teste200</a> - <a href="javascript:passaPagina(15);">teste15</a>
+<br>
+<a href="javascript:passaPagina(atual-1);">anterior</a> - <a href="javascript:passaPagina(atual+1);">proximo</a>
+-->
+<div id='aux' style="position:absolute; width:500px; background:#ccc; padding:10px; height:20px; z-index:99999999999; top:0px; left:0px; display:none;"></div>
+<div id='revista'></div>
+<div id="protecao"></div>
+
+<!--CABECALHO -->
+<div id="cabecalhoDentro" class="abas abas_especiais" >
+
+<div class="p_esquerda">
+
+<div class="icones"><div></div>
+<a href="javascript:passaPagina(atual-1);">
+<img src="icones/icone_r2_c2_s1.png" width="50" height="50">
+<img src="icones/bicone_r2_c2_s1.png" width="50" height="50">
+</a>
+</div>
+
+
+<div class="icones"><div></div>
+<a href="javascript:passaPagina(atual+1);">
+<img src="icones/icone_r2_c4_s1.png" width="50" height="50">
+<img src="icones/bicone_r2_c4_s1.png" width="50" height="50">
+<a/>
+</div>
+
+<div class="icones"><div></div>
+<a href="#">
+<img src="icones/icone_r2_c7_s1.png" width="50" height="50">
+<img src="icones/bicone_r2_c7_s1.png" width="50" height="50">
+</a>
+</div>
+
+<div class="icones"><div></div>
+<a href="#">
+<img src="icones/icone_r2_c11_s1.png" width="50" height="50">
+<img src="icones/bicone_r2_c11_s1.png" width="50" height="50">
+</a>
+</div>
+
+</div>
+
+<div class="p_meio"><img src="logop.png" width="155" height="23"></div>
+
+<div class="p_direita">
+<div class="icones"><div></div>
+<a href="mailto:?subject=Manual da Mamãe&body=Conheça o Manual da Mamãe">
+<img src="icones/icone_r2_c18_s1.png" width="50" height="50">
+<img src="icones/bicone_r2_c18_s1.png" width="50" height="50">
+</a>
+</div>
+</div>
+
+</div>
+
+
+<!--RODAPE -->
+<div id="rodapeDentro" class="abas abas_especiais" >
+
+<div class="p_esquerda">
+
+<div class="icones"><div>Capa</div>
+<a href="javascript:passaPagina(1);">
+<img src="icones/icone_r4_c2_s1.png" width="50" height="50">
+<img src="icones/bicone_r4_c2_s1.png" width="50" height="50">
+</a>
+</div>
+
+<div class="icones"><div>Miniaturas</div>
+<a href="javascript:miniatura();">
+<img src="icones/icone_r4_c5_s1.png" width="50" height="50">
+<img src="icones/bicone_r4_c5_s1.png" width="50" height="50">
+</a>
+</div>
+
+<div class="icones"><div>Navegação</div>
+<a href="javascript:navegacao();">
+<img src="icones/icone_r4_c8_s1.png" width="50" height="50">
+<img src="icones/bicone_r4_c8_s1.png" width="50" height="50">
+</a>
+</div>
+
+</div>
+
+
+
+<div class="p_direita">
+
+<div class="icones"><div>Estúdio Criar</div>
+<a href="http://estudiocriar.com.br" target="_blank">
+<img src="icones/icone_r4_c17_s1.png" width="50" height="50">
+<img src="icones/bicone_r4_c17_s1.png" width="50" height="50">
+</a>
+</div>
+
+<div class="icones"><div>Ajuda</div>
+<a href="#">
+<img src="icones/icone_r4_c15_s1.png" width="50" height="50">
+<img src="icones/bicone_r4_c15_s1.png" width="50" height="50">
+</a>
+</div>
+
+<div class="icones"><div>Acervo</div>
+<a href="#">
+<img src="icones/icone_r4_c13_s1.png" width="50" height="50">
+<img src="icones/bicone_r4_c13_s1.png" width="50" height="50">
+</a>
+</div>
+
+
+</div>
+</div>
+<div id="mini"></div>
+<div id="navegacao"><div></div></div>
+<div id="cabecalho" class="abas"></div>
+<div id="rodape" class="abas"></div>
+</div>
+</body>
+</html>

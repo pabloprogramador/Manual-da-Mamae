@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="GX.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+$('.botao').gxInit({queue: 'cancel'});
+$('.botao').hover(function(){
+	$(this).gx({'width': 100, 'height':100}, 400, 'Sine:Out');
+}, function() {
+	$(this).gx({'width': 50, 'height':50}, 2000, 'Sine:Out');
+})
+})
+
+function Particula(grupo, ob, qt, tamanho, inix, iniy){
+	var thtml = '';
+	for(var i = 0; i < qt ; i++){
+		thtml += '<div class="'+grupo+'" style="left:'+inix+'px; top:'+inix+'px; position:absolute; height:'+tamanho+'px; width:'+tamanho+'px; background:#FFF"></div>';
+	}
+	$(ob).html(thtml);
+}
+
+
+
+function ativa1(){
+//$('#ob1').gxInit({delay: 500});
+//$('#ob1').gx({'left': '-=200', 'width': '10%', 'height': '10%' , 'opacity':1}, 1).gx({'left': '+=200', 'width': '200%', 'height': '200%'}, 1000, 'Back:Out' );
+$('#ob1')
+//.gx(null, 1, null, '', 1000)
+.gx({'width': '200%' ,'left': 'center' , 'top': '20' ,'opacity':1, 'height': 500}, 1000, 'Back:Out')
+.gx({'width': '200%' ,'left': 'center' , 'top': '20' ,'opacity':1, 'height': 100}, 1000, 'Back:Out', function(){}, 5000)
+.gx({'width': '200%' ,'left': 'center' , 'top': '20' ,'opacity':1, 'height': 200}, 1000, 'Back:Out', function(){});
+}
+
+function Particula(grupo, ob, qt, tamanho, inix, iniy){
+	var thtml = '';
+	for(var i = 0; i < qt ; i++){
+		thtml += '<div class="'+grupo+'" style="left:'+inix+'px; top:'+inix+'px; position:absolute; height:'+tamanho+'px; width:'+tamanho+'px; background:#FFF"></div>';
+	}
+	$(ob).html(thtml);
+}
+
+function animaParticula(grupo, palco, inix, iniy){
+	$(grupo).each(function(i, val) {
+		function anima(este){
+			//$(este).left(200);
+			var posinix = (Math.random()* 20) + inix;
+			var posiniy = (Math.random()* 20) + iniy;
+			
+			var posx = Math.random()* $(palco).width();
+			var posy = Math.random()* $(palco).height();
+			var duracao = (Math.random()*2) + .5;
+			var atraso = (Math.random()*1) + 0;
+			/*
+			$(este).tween({
+				  top:{start:posinix, stop: posx, duration: duracao, time: atraso, effect: 'easeOut'},
+				  left:{start:posiniy, stop: posy, duration: duracao, time: atraso, effect: 'easeOut'},
+				  opacity:{start:100, stop: 0, duration: duracao, time: atraso, effect: 'easeIn'},
+				  onStop: function(){anima(este)}
+			}).play();
+			*/
+			//$(este).css('left', posiniy+'px');
+			//$(este).css('top', posinix+'px');
+			$(este).gxInit({duration: 1000, fps: 50, defaultUnit: 'px', queue: 'queue', easing: 'Linear', delay: atraso*100});
+			//$(este).move(posinix,posiniy, 'duration: 10', function(){anima(este)});
+			$(este).gx({'top': posy, 'left': posx}, duracao*1000, 'Sine:Out').gx({'top': posiniy, 'left': posinix}, 1, 'Linear',function(){anima(este)});
+		}
+		anima(this);	
+    });
+}
+
+
+
+
+function ativa3(){
+	Particula('novaParticula','#parti',500, 3, 200, 200);
+	animaParticula('.novaParticula', '#parti' , 200 , 200);
+
+}
+
+</script>
+</head>
+<body>
+<div><div>
+<div id="ob1" style="position:absolute; top:200px; left:200px; background-color:#099; width:50px; height:50px; opacity:0; filter: alpha(opacity=0);">teste</div>
+
+<div class="botao" style="position:relative; float:left; background-color:#900; width:50px; height:50px;">teste</div>
+<div class="botao" style="position:relative; float:left; background-color:#900; width:50px; height:50px;">teste</div>
+<div class="botao" style="position:relative; float:left; background-color:#900; width:50px; height:50px;">teste</div>
+<div class="botao" style="position:relative; float:left; background-color:#900; width:50px; height:50px;">teste</div>
+<div class="botao" style="position:relative; float:left; background-color:#900; width:50px; height:50px;">teste</div>
+<div class="botao" style="position:relative; float:left; background-color:#900; width:50px; height:50px;">teste</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="parti" style="position:absolute; width:400px; height:400px; overflow:hidden; background-color:#000; top:300px;"></div>
+<p><a href="javascript:ativa1();">teste1</a></p>
+<p><a href="javascript:ativa2();">teste2</a></p>
+<p><a href="javascript:ativa3();">teste3</a></p>
+</div></div>
+</body>
+</html>

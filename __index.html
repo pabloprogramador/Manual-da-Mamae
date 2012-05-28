@@ -1,0 +1,119 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Manual Mamãe</title> 
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/jquery.mobile-1.1.0.min.css" />
+    <link rel="stylesheet" href="css/carrosel.css" />
+	<script src="js/jquery-1.4.4.min.js"></script>
+  	<script src="js/jquery.mobile-1.0a3.min.js"></script>
+    
+    <script src="js/jquery-ui-1.8.7.custom.min.js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery.azutek.com.carousel.js?x=20"></script>
+    
+<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#palco').height((window.innerHeight - 45)+"px");
+		
+				$('#azutekCarousel').azutekCarousel({
+					transitionSpeed :250,
+					activeCard:0,
+					width:(window.innerWidth - 0)+"px",
+					height:(window.innerHeight - 45)+"px"
+				});
+				
+				
+			});
+			
+
+		//slideTocard(e);
+
+		
+		function reseta_pagina(){
+			//location.reload(true);
+		}
+		
+		//AJUSTE DE TAMANHO
+</script>
+<link rel="stylesheet" href="themes/manualdobebe.min.css" />
+</head> 
+
+<body style="background-color:#EEE;"> 
+<div data-role="page" data-theme="a" id="home">
+
+<div data-role="header" data-theme="a">
+    <div class="ui-grid-b" style="height:40px;">
+        <div class="ui-block-a"><a style="margin:5px;" href="#revista" data-role="button" data-icon="arrow-r">Revista</a></div>
+        <div class="ui-block-b" style="text-align:center;"><img style="width:100%; max-width:250px;" src="logo.png"></div>
+        <div class="ui-block-c" style="text-align:right;"><a style="margin:5px;" href="#contato" data-role="button" data-icon="info">Contato</a></div>
+	</div>
+</div>
+<p style="text-align:center; color:#C99;">Índice do Manual do Bebê</p>
+	<ul data-role="listview" data-theme="a">
+	<li data-theme="a" >Saúde da Mamãe
+    	<ul data-role="listview" data-inset="true" data-filter="true" data-add-back-btn="true">
+        <li><a href="#revista">Perguntas e respostas sobre o mês a mês da gravidez</a></li>
+        <li><a href="#revista">O que posso ou não fazer durante a gravidez?</a></li>
+        <li><a href="#revista">Guia de exames na gravidez</a></li>
+        <li><a href="#revista">Meu bebê está bem? a Importância do ultrassom</a></li>
+        </ul>
+    </li>
+	<li>Saúde do Bebê</li>
+	<li>Beleza da Mamãe</li>
+	<li>Vamos às Compras e aos Serviços</li>
+	<li>Crescimento Infantil</li>
+	</ul>
+	<div data-role="footer">
+	</div><!-- /footer -->
+
+</div>
+
+
+<div data-role="page" id="revista">
+	<div data-role="header" data-theme="a">
+    <div class="ui-grid-b" style="height:40px;">
+        <div class="ui-block-a"></div>
+        <div class="ui-block-b" style="text-align:center;"><img style="width:100%; max-width:250px;" src="logo.png"></div>
+        <div class="ui-block-c" style="text-align:right;"><a style="margin:5px;" href="#contato" data-role="button" data-icon="info">Contato</a></div>
+	</div>
+</div>
+
+	<div id="palco" data-role="content" style="padding:0px;">	
+		<div class="azutekCarouselObj" id="azutekCarousel">
+			<div class="container">
+            <script>
+			var i = 1;
+			var total = 10;
+			for(i = 1; i < total + 1; i++){
+				document.write('<div class="card" style="overflow: auto;"><img class="folha" src="img/MANUAL DA MAMAE GYN 2012 - '+i+'.jpg" alt="" width="100%" border="0" /></div>');
+			}
+				
+			</script>
+
+			</div>
+		</div>
+	</div><!-- /content -->
+	<div data-role="footer">
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<div data-role="page" id="contato">
+	<div data-role="header">
+		<h1>Contato</h1>
+	</div><!-- /header -->
+	<div data-role="content">	
+        <p><b>Telefone: 62 3333 3333</b></p>
+        <p>Endereço: Rua x - nº001 - Goiânia - Goiás</p>
+        <form>
+        <input style="margin-bottom:10px;" type="text" name="nome" id="nome" value="" placeholder="Nome"/>
+        <input style="margin-bottom:10px;" type="text" name="fone" id="fone" value="" placeholder="Telefone"/>
+        <textarea style="margin-bottom:10px;"  name="mensagem" id="mensagem" value="" placeholder="Mensagem"/></textarea>
+        <button type="submit" data-theme="a" data-mini="true" class="ui-btn-hidden" aria-disabled="false">Enviar</button>
+    </form>
+	</div><!-- /content -->
+	<div data-role="footer"><p style="text-align:right; margin-right:10px; font-size:12px;">Produzido por <a href="http://estudiocriar.com.br/" target="_blank">Estudio Criar</a></p>
+	</div><!-- /footer -->
+</div><!-- /page -->
+</body>
+</html>

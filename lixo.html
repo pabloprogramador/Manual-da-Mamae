@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Orientation</title>
+        <meta name = "viewport" content="width=320, user-scalable=0"/>
+ 
+        <script type="text/javascript" language="javascript">
+ 
+            function updateOrientation()
+            {
+                var displayStr = "Orientation : ";
+ 
+                switch(window.orientation)
+                {
+                    case 0:
+                        displayStr += "Portrait";
+                    break;
+ 
+                    case -90:
+                        displayStr += "Landscape (right, screen turned clockwise)";
+                    break;
+ 
+                    case 90:
+                        displayStr += "Landscape (left, screen turned counterclockwise)";
+                    break;
+ 
+                    case 180:
+                        displayStr += "Portrait (upside-down portrait)";
+                    break;
+ 
+                }
+                document.getElementById("output").innerHTML = displayStr;
+            }
+    </script>
+    </head>
+    <body onorientationchange="updateOrientation();">
+        <div id="output"></div>
+    </body>
+</html>
