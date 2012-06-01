@@ -139,7 +139,7 @@ $.fn.peqRevista = function (configuracao) {
 					//new iScroll("folha"+i);
 					//listaZoom[i] = new iScroll('folha'+i, { zoom:true , bounce:true});
 					//listaZoom[i].disable();
-dentroDiv += '<div id="folha'+i+'" class="folhas"><div id="infolha'+i+'" class="infolhas"><div><img style="position:absolute;" class="folhas_img" src="'+configuracao.padraoSrcMini+i+'.jpg"/></div></div></div>';
+dentroDiv += '<div id="folha'+i+'" class="folhas"><div id="infolha'+i+'" class="infolhas"><div><img style=" position:absolute;" class="folhas_img" src="'+configuracao.padraoSrc+i+'.jpg"/></div></div></div>';
 dentroMini += '<div class="folhasMini"><a href="javascript:passaPaginaMini('+i+');"><img  class="folhas_imgMini" src="'+configuracao.padraoSrcMini+i+'.jpg"/></a></div>';
 dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');"><img  class="folhas_imgMini" src="'+configuracao.padraoSrcMini+i+'.jpg"/></a></div>';
 					}
@@ -150,7 +150,7 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 				$("#navegacaoC").html(dentroNav);
 				este.html(dentroDiv);
 				
-				$("#folha"+atual+" > div > div").find('img').attr({src: configuracao.padraoSrc+atual+".jpg"});
+				//$("#folha"+atual+" > div > div").find('img').attr({src: configuracao.padraoSrc+atual+".jpg"});
 				
 				function ativaScroll(){
 					//$("#aux").append(listaZoom[atual] + ' / '+ escuro +"}");
@@ -172,12 +172,19 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 						listaZoom[atual].destroy();
 					}
 				}
-
+				
+				function mostraFoto(){
+					//$(".folhas > div > div").children('img:nth-child(2)').css({display:"none"});
+					//$("#folha"+atual+" > div > div").children('img:nth-child(2)').css({display:"block"});
+					//children('div:nth-child('+e+')')
+				}
+				
 				//var peqZoom = peqZoom = new peqZoomImg($("#folha"+atual+" > div"),$("#folha"+atual+" > div > div").children('img'));
 
 				//var zoom = new ZoomView(este,este.children('div:nth-child('+e+')').children('img')); //Zoom
 				 
 				ini();
+				mostraFoto();
 				fechaSub();
 				ativaScroll();
 				
@@ -353,7 +360,7 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 								//$("#aux").append(atual);
 								//$(".folhas").css({top:'-9999999px' , left: '0px'});
 								for(i = 1; i <= folhasQt ; i++){
-									$("#folha"+i+" > div > div").find('img').attr({src: configuracao.padraoSrcMini+i+".jpg"});
+									//$("#folha"+i+" > div > div").find('img').attr({src: configuracao.padraoSrcMini+i+".jpg"});
 									if(listaZoom[i]!=undefined){
 										listaZoom[i].destroy();
 									}
@@ -363,7 +370,8 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 								//listaZoom[atual].zoom(0, 0, 2);
 								//$(".folhas > div").unbind();
 								$(".folhas").hide();
-								$("#folha"+atual+" > div > div").find('img').attr({src: configuracao.padraoSrc+atual+".jpg"});
+								//$("#folha"+atual+" > div > div").find('img').attr({src: configuracao.padraoSrc+atual+".jpg"});
+								mostraFoto();
 								//folha1S = new iScroll('folha'+atual,  { zoom:true });
 								$("#folha"+atual).show();
 								//este.unbind();
