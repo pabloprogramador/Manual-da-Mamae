@@ -7,6 +7,20 @@
 	padding:0px; margin:0px; overflow:hidden;
 }
 
+#miniC{
+	position:absolute;
+	top:0px; bottom:0px; left:0;
+	width:100%;
+	overflow:auto;
+}
+
+#navegacaoC{
+	position:absolute;
+	top:0px; bottom:0px; left:0;
+	width:100%;
+	overflow:auto;
+}
+
 #mini{
     position:absolute;
     top:0;
@@ -15,7 +29,6 @@
    /* height:100%; */
     background-color:#eee;
     padding:0px;
-	overflow:scroll;
 }
 
 #navegacao{
@@ -23,11 +36,13 @@
     top:0px;
     left:0px;
     width:100%;
-    height:220px;
+    height:170px;
     background-color:#333;
     padding:0px;
-	overflow-x: scroll;
-	overflow-y: hidden;
+}
+
+#navegacaoC{
+	position:relative;
 }
 
 .icones > div{
@@ -127,6 +142,15 @@
 	left:0px;
 	background:#eee;
 	display:none;
+}
+
+.infolhas {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	overflow:auto;
 }
 
 .pagStatus{
@@ -245,4 +269,10 @@ filter:alpha(opacity=0);
 -moz-opacity:0;
 -khtml-opacity:0;
 opacity:0;
+}
+
+body{
+overflow:hidden;
+-webkit-user-select:none;
+-webkit-text-size-adjust:none;
 }

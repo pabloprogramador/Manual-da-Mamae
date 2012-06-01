@@ -33,6 +33,11 @@ $.fn.peqRevista = function (configuracao) {
 				var ativaDrag = false;
 				navegacaoAtual = false;
 				miniAtual = false;
+				var listaZoom = {};
+				var escuro = false;
+				
+				var NavScroll;
+				var MiniScroll;
 				
 				$("#mini").css({top:altura, height:altura-100});
 				$("#navegacao").css({top:altura});
@@ -83,60 +88,98 @@ $.fn.peqRevista = function (configuracao) {
 				}
 				
 				function fechaTudo(){
-					fechaNav();
+					
 					fechaMini();
+					fechaNav();
 				}
 				
 				function fechaMini(){
-					$("#mini").gx({'top': altura}, 500, 'Sine:Out');
+					if(MiniScroll!=undefined){MiniScroll.destroy();}
+					$("#mini").gx({'top': altura}, 300);
 					miniAtual = false;
+					//ativaScroll();
 				}
 				
 				function fechaNav(){
-					$("#navegacao").gx({'top': altura}, 500, 'Sine:Out');
+					if(NavScroll!=undefined){NavScroll.destroy();}
+					$("#navegacao").gx({'top': altura}, 300);
 					navegacaoAtual = false;
 				}
 				
 				function abreMini(){
 					fechaTudo();
-					$("#mini").gx({'top': 50}, 500, 'Sine:Out');
+					$("#mini").gx({'top': 50}, 500);
 					miniAtual = true;
+					//desativaScroll();
+					MiniScroll = new iScroll('mini');
+					
+					//MiniScroll = new iScroll('mini');
 				}
 				
 				function abreNav(){
 					fechaTudo();
-					$("#navegacao").gx({'top': altura-200}, 500, 'Sine:Out');
+					//$("#navegacaoC").show();
+					$("#navegacao").gx({'top': altura-220}, 300);
 					navegacaoAtual = true;
+					//desativaScroll();
+					NavScroll = new iScroll('navegacao');
+					
 				}
 				
 				$("#mini").gxInit({queue: 'cancel'});
 				$("#navagecao").gxInit({queue: 'cancel'});
 				
+				
 				$("body").bind("dragstart", function() { 
         			return false; 
 				});
 
-					
+
 				for(i = 1; i <= folhasQt ; i++){
-						dentroDiv += '<div id="folha'+i+'" class="folhas"><div class="pagStatus">Aguardando...</div><img style="position:absolute;" class="folhas_img" src=""/></div>';
-						dentroMini += '<div class="folhasMini"><div class="pagStatus statusMini">Aguardando...</div><a href="javascript:passaPaginaMini('+i+');"><img  class="folhas_imgMini" src=""/></a></div>';
-						dentroNav += '<div class="folhasMini"><div class="pagStatus statusMini">Aguardando...</div><a href="javascript:passaPaginaNav('+i+');"><img  class="folhas_imgMini" src=""/></a></div>';
+					//new iScroll("folha"+i);
+					//listaZoom[i] = new iScroll('folha'+i, { zoom:true , bounce:true});
+					//listaZoom[i].disable();
+dentroDiv += '<div id="folha'+i+'" class="folhas"><div id="infolha'+i+'" class="infolhas"><div><img style="position:absolute;" class="folhas_img" src="'+configuracao.padraoSrcMini+i+'.jpg"/></div></div></div>';
+dentroMini += '<div class="folhasMini"><a href="javascript:passaPaginaMini('+i+');"><img  class="folhas_imgMini" src="'+configuracao.padraoSrcMini+i+'.jpg"/></a></div>';
+dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');"><img  class="folhas_imgMini" src="'+configuracao.padraoSrcMini+i+'.jpg"/></a></div>';
 					}
 					
-				$("#mini").html(dentroMini);
-				$("#navegacao > div").css({width:folhasQt*(120)});
-				$("#navegacao > div").html(dentroNav);
+				$("#miniC").html(dentroMini);
+				$("#miniC").css({height:folhasQt*(153/6)});
+				$("#navegacaoC").css({width:folhasQt*(120)});
+				$("#navegacaoC").html(dentroNav);
 				este.html(dentroDiv);
-				var novoImg = new peqCarregaImg(este, 1, folhasQt, configuracao.padraoSrc, "<img src='carregador.gif'><br>Carregando..."); //CARREGA AS IMAGNES
-				var novoImgMini = new peqCarregaImg($("#mini"), 1, folhasQt, configuracao.padraoSrcMini, "<b>Carregando...</b>"); //CARREGA AS IMAGNES
-				var novoImgMini = new peqCarregaImg($("#navegacao > div"), 1, folhasQt, configuracao.padraoSrcMini, "<b>Carregando...</b>"); //CARREGA AS IMAGNES
 				
-				var peqZoom = new peqZoomImg(este, este.children('div:nth-child(1)').children('img'));
+				$("#folha"+atual+" > div > div").find('img').attr({src: configuracao.padraoSrc+atual+".jpg"});
+				
+				function ativaScroll(){
+					//$("#aux").append(listaZoom[atual] + ' / '+ escuro +"}");
+					if(!escuro){
+						//alert('foi');
+						desativaScroll();
+						listaZoom[atual] = new iScroll('infolha'+atual, { zoom:true , bounce:true});
+					}
+				}
+				
+				function escuroAtivaScroll(){
+					escuro = false;
+					ativaScroll();
+				}
+				
+				function desativaScroll(){
+					if(listaZoom[atual]!=undefined){
+						//alert('morre');
+						listaZoom[atual].destroy();
+					}
+				}
+
+				//var peqZoom = peqZoom = new peqZoomImg($("#folha"+atual+" > div"),$("#folha"+atual+" > div > div").children('img'));
 
 				//var zoom = new ZoomView(este,este.children('div:nth-child('+e+')').children('img')); //Zoom
 				 
 				ini();
 				fechaSub();
+				ativaScroll();
 				
 				$("#protecao").click(function() {
 					fechaSub();
@@ -148,6 +191,8 @@ $.fn.peqRevista = function (configuracao) {
 				
 				
 				function abreSub(){
+					escuro = true;
+					desativaScroll();
 					$("#cabecalho").hide();
 					$("#rodape").hide();
 					$("#cabecalhoDentro").gx({'top': '0'}, 500, 'Sine:Out')
@@ -164,7 +209,7 @@ $.fn.peqRevista = function (configuracao) {
 					$('#protecao').hide();
 					$("#cabecalho").show();
 					$("#rodape").show();
-					$("#cabecalhoDentro").gx({'top': '-50'}, 500, 'Sine:Out')
+					$("#cabecalhoDentro").gx({'top': '-50'}, 500, 'Sine:Out', function(){escuroAtivaScroll();})
 					$("#rodapeDentro").animate({ bottom: -50 });
 					//$("#cabecalhoDentro").hide();
 					//$("#rodapeDentro").hide();
@@ -182,7 +227,8 @@ $.fn.peqRevista = function (configuracao) {
 					
 					
 					este.children("div").width(largura).height(altura);
-					este.children("div").children("img").width(largura).height(altura);
+					este.children("div").children("div").children("div").children("img").width(largura).height(altura);
+					este.children("div").children("div").children("div").width(largura).height(altura);
 					//.each(function (i, ob) { });
 					
 					este.children("div").hammer().bind("dragstart drag dragend", function(ev) {
@@ -194,11 +240,14 @@ $.fn.peqRevista = function (configuracao) {
 						//var teste2 = ev.touches[1].y+'';
 						//$('#aux').html(ev.touches[0].x+" - "+ev.touches[0].y + " / " + teste+" - "+teste);
 						//teste = 1;
-						if((peqZoom.zoomAtual == 1) && teste<2 && !peqZoom.estaTrabalhando){
+						//alert(listaZoom[atual]);
+						if(listaZoom[atual].scale==1 && teste<2){
+							desativaScroll();
+							//listaZoom[atual].destroy();
 							//peqZoom = null;
 							//peqZoom = new Object;
 							//peqZoom.zoomAtual = 1;
-							peqZoom.liberaGeral = false;
+							//peqZoom.liberaGeral = false;
 							if(ev.type=='dragstart'){
 								ativaDrag=true;
 								liberaMorte = false;
@@ -299,14 +348,29 @@ $.fn.peqRevista = function (configuracao) {
 						
 						function morre(){
 							if(liberaMorte) {
-								peqZoom.liberaGeral = true;
+								//alert('ok');
+								//peqZoom.liberaGeral = true;
 								//$("#aux").append(atual);
 								//$(".folhas").css({top:'-9999999px' , left: '0px'});
+								for(i = 1; i <= folhasQt ; i++){
+									$("#folha"+i+" > div > div").find('img').attr({src: configuracao.padraoSrcMini+i+".jpg"});
+									if(listaZoom[i]!=undefined){
+										listaZoom[i].destroy();
+									}
+								}
+								
+								ativaScroll();
+								//listaZoom[atual].zoom(0, 0, 2);
+								//$(".folhas > div").unbind();
 								$(".folhas").hide();
+								$("#folha"+atual+" > div > div").find('img').attr({src: configuracao.padraoSrc+atual+".jpg"});
+								//folha1S = new iScroll('folha'+atual,  { zoom:true });
 								$("#folha"+atual).show();
-								este.unbind();
+								//este.unbind();
 								//$("#folha"+atual).children('img').unbind();
-								peqZoom = new peqZoomImg(este, $("#folha"+atual).children('img'));
+								
+								//peqZoom = new peqZoomImg($("#folha"+atual+" > div"),$("#folha"+atual));
+								
 								//$("#folha"+atual).children('img').unbind();
 								//peqZoom.liberaGeral = false;
 							}
