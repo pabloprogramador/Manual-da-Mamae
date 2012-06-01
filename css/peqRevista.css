@@ -152,6 +152,10 @@
 	height:100%;
 	overflow:auto;
 }
+.folhas_imgMini{
+	width:100px;
+	height:133px;
+}
 
 .pagStatus{
 	position:absolute;
