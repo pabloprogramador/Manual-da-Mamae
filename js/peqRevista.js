@@ -139,7 +139,7 @@ $.fn.peqRevista = function (configuracao) {
 					//new iScroll("folha"+i);
 					//listaZoom[i] = new iScroll('folha'+i, { zoom:true , bounce:true});
 					//listaZoom[i].disable();
-dentroDiv += '<div id="folha'+i+'" class="folhas"><div id="infolha'+i+'" class="infolhas"><div><img style=" position:absolute;" class="folhas_img" src="'+configuracao.padraoSrc+i+'.jpg"/></div></div></div>';
+dentroDiv += '<div id="folha'+i+'" class="folhas"><div id="infolha'+i+'" class="infolhas"><div><img style=" position:absolute;" class="folhas_img" src="'+configuracao.padraoSrcMini+i+'.jpg"/><img style=" position:absolute;" class="folhas_img" src="'+configuracao.padraoSrc+i+'.jpg"/></div></div></div>';
 dentroMini += '<div class="folhasMini"><a href="javascript:passaPaginaMini('+i+');"><img  class="folhas_imgMini" src="'+configuracao.padraoSrcMini+i+'.jpg"/></a></div>';
 dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');"><img  class="folhas_imgMini" src="'+configuracao.padraoSrcMini+i+'.jpg"/></a></div>';
 					}
@@ -174,8 +174,8 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 				}
 				
 				function mostraFoto(){
-					//$(".folhas > div > div").children('img:nth-child(2)').css({display:"none"});
-					//$("#folha"+atual+" > div > div").children('img:nth-child(2)').css({display:"block"});
+					$(".folhas > div > div").children('img:nth-child(2)').css({display:"none"});
+					$("#folha"+atual+" > div > div").children('img:nth-child(2)').css({display:"block"});
 					//children('div:nth-child('+e+')')
 				}
 				
