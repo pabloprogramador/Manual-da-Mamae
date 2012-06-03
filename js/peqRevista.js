@@ -24,6 +24,7 @@ $.fn.peqRevista = function (configuracao) {
 				var altura = este.height();
 				var folhasQt = configuracao.quantidade;
 				var liberaMorte = true;
+				var liberaGeral = true;
 				var liberaProxima = true;
 				var i = 0;
 				var dentroDiv = '';
@@ -111,7 +112,7 @@ $.fn.peqRevista = function (configuracao) {
 					$("#mini").gx({'top': 50}, 500);
 					miniAtual = true;
 					//desativaScroll();
-					MiniScroll = new iScroll('mini');
+					//MiniScroll = new iScroll('mini',{useTransition:true});
 					
 					//MiniScroll = new iScroll('mini');
 				}
@@ -122,7 +123,7 @@ $.fn.peqRevista = function (configuracao) {
 					$("#navegacao").gx({'top': altura-220}, 300);
 					navegacaoAtual = true;
 					//desativaScroll();
-					NavScroll = new iScroll('navegacao');
+					//NavScroll = new iScroll('navegacao',{useTransition:true});
 					
 				}
 				
@@ -157,7 +158,20 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 					if(!escuro){
 						//alert('foi');
 						desativaScroll();
-						listaZoom[atual] = new iScroll('infolha'+atual, { zoom:true , bounce:true});
+						/*
+						setTimeout( function() {
+							ativaScrollDireto();
+						}, 1 );
+						*/
+						listaZoom[atual] = new iScroll('infolha'+atual, { zoom:true , bounce:true, useTransition:true});
+					}
+				}
+				
+				function ativaScrollDireto(){
+					//alert(listaZoom[atual]==undefined);
+					if(!escuro && liberaGeral){
+						//desativaScroll();
+						listaZoom[atual] = new iScroll('infolha'+atual, { zoom:true , bounce:true, useTransition:true});
 					}
 				}
 				
@@ -251,7 +265,13 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 						//$('#aux').html(ev.touches[0].x+" - "+ev.touches[0].y + " / " + teste+" - "+teste);
 						//teste = 1;
 						//alert(listaZoom[atual]);
-						if(listaZoom[atual].scale==1 && teste<2){
+						var auxZ = (listaZoom[atual]==undefined) ? false : true;
+						var auxZ = auxZ ? listaZoom[atual].scale==1 : true;
+						
+						
+
+						if(auxZ && teste<2){
+							liberaGeral = false;
 							desativaScroll();
 							//listaZoom[atual].destroy();
 							//peqZoom = null;
@@ -377,6 +397,7 @@ dentroNav += '<div class="folhasMini"><a href="javascript:passaPaginaNav('+i+');
 								mostraFoto();
 								//folha1S = new iScroll('folha'+atual,  { zoom:true });
 								$("#folha"+atual).show();
+								liberaGeral = true;
 								//este.unbind();
 								//$("#folha"+atual).children('img').unbind();
 								

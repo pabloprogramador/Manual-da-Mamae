@@ -3,7 +3,7 @@
 	<head> 
 	<title>Manual Mamãe</title> 
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="viewport" content="user-scalable=no,width=device-width" />
     <link rel="stylesheet" href="css/peqRevista.css" />
         
 	<script src="js/jquery-1.7.1.min.js"></script>
@@ -32,6 +32,8 @@
 			quantidade:240
 		});
 		
+		//$("#protecao").addEventListener('touchmove', function(event) {event.preventDefault();}, false);
+
 		//$(document).bind('touchmove',function(e) {e.preventDefault();});
 		//var peqZoom = new peqZoomImg($("#revista"), $("#revista").children('div:nth-child(1)').children('img')); //Zoom
 	});
@@ -50,8 +52,8 @@
 		//scrollSide = new iScroll('navScroller');
 	}
 	
-	document.addEventListener('touchmove', function(e){ e.preventDefault(); }, false);
-	document.addEventListener('DOMContentLoaded', loaded, false);
+	//document.addEventListener('touchmove', function(e){ e.preventDefault(); }, false);
+	//document.addEventListener('DOMContentLoaded', loaded, false);
 
 	</script>
 
